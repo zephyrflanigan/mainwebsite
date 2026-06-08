@@ -990,13 +990,6 @@
       }
     }
   }
-  .hover\:text-mauve {
-    &:hover {
-      @media (hover: hover) {
-        color: var(--color-mauve);
-      }
-    }
-  }
   .md\:flex {
     @media (width >= 48rem) {
       display: flex;
