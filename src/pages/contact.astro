@@ -4,8 +4,9 @@ import Layout from '../layouts/Layout.astro';
 
 <Layout
   title="Contact — Zephyr Flanigan"
-  description="Get in touch with Zephyr Flanigan — open to new projects, roles, and conversations."
-  bodyClass="min-h-screen flex flex-col"
+  description="Get in touch with Zephyr Flanigan — open to interesting conversations, new projects, and roles."
+  bodyClass="bg-sand min-h-screen flex flex-col"
+  canonical="https://zephyrflanigan.com/contact/"
 >
   <!-- ===================== SPLIT LAYOUT ===================== -->
   <main class="flex-1 flex flex-col md:flex-row">
@@ -39,7 +40,18 @@ import Layout from '../layouts/Layout.astro';
         <!-- Email display -->
         <div class="mb-2">
           <p class="font-jakarta font-semibold text-sand text-xl mb-1">Email</p>
-          <p class="font-jetbrains text-cream text-base mb-4">hello@zephyrflanigan.com</p>
+          <div class="flex items-center gap-3 mb-4">
+            <span id="email-text" class="font-jetbrains text-cream text-base">hello@zephyrflanigan.com</span>
+            <button id="copy-email" aria-label="Copy email address"
+                    class="btn btn-ghost btn-xs text-cream hover:text-sand">
+              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="none"
+                   viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+              </svg>
+            </button>
+            <span id="copy-confirm" class="font-jetbrains text-xs text-cream opacity-0 transition-opacity">Copied!</span>
+          </div>
           <a
             href="mailto:hello@zephyrflanigan.com"
             class="btn font-jetbrains text-olive bg-sand border-sand rounded-full hover:bg-driftwood hover:border-driftwood w-full mb-8"
@@ -85,4 +97,20 @@ import Layout from '../layouts/Layout.astro';
 
   </main>
   <!-- ==================== END SPLIT LAYOUT ==================== -->
+
+  <script>
+    // 3d — copy email to clipboard
+    const copyBtn = document.getElementById('copy-email');
+    if (copyBtn) {
+      copyBtn.addEventListener('click', async () => {
+        const email = document.getElementById('email-text')?.textContent?.trim() ?? '';
+        await navigator.clipboard.writeText(email);
+        const confirm = document.getElementById('copy-confirm');
+        if (confirm) {
+          confirm.classList.replace('opacity-0', 'opacity-100');
+          setTimeout(() => confirm.classList.replace('opacity-100', 'opacity-0'), 2000);
+        }
+      });
+    }
+  </script>
 </Layout>

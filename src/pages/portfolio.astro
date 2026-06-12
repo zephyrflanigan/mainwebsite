@@ -4,14 +4,15 @@ import Layout from '../layouts/Layout.astro';
 
 <Layout
   title="Portfolio — Zephyr Flanigan"
-  description="A collection of projects built by Zephyr Flanigan — side experiments, tools, and things made to learn something new."
+  description="Projects built by Zephyr Flanigan — full stack web apps, APIs, and side experiments."
+  canonical="https://zephyrflanigan.com/portfolio/"
 >
   <!-- ===================== MAIN CONTENT ===================== -->
   <main class="flex-1 pt-28 pb-24 px-8 md:px-16 lg:px-32">
     <div class="max-w-4xl">
 
       <!-- ---- HEADER ---- -->
-      <section class="mb-16">
+      <section class="mb-16 reveal">
         <p class="font-jetbrains text-lichen text-lg mb-3">Things I've built</p>
         <h1 class="text-4xl md:text-6xl font-jakarta font-semibold text-mauve leading-tight mb-6">
           Portfolio
@@ -27,7 +28,7 @@ import Layout from '../layouts/Layout.astro';
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
 
           <!-- Project 1 -->
-          <article class="project-card rounded-2xl overflow-hidden" style="background-color: #F5F0E8; border: 1px solid rgba(184, 144, 140, 0.25);">
+          <article class="project-card reveal rounded-2xl overflow-hidden" style="background-color: #F5F0E8; border: 1px solid rgba(184, 144, 140, 0.25);">
             <div class="flex items-center justify-center h-44" style="background-color: #E8CFC9;">
               <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="none" viewBox="0 0 24 24" stroke="rgba(122, 92, 92, 0.4)" stroke-width="1.5">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M6.75 7.5l3 2.25-3 2.25m4.5 0h3m-9 8.25h13.5A2.25 2.25 0 0021 18V6a2.25 2.25 0 00-2.25-2.25H5.25A2.25 2.25 0 003 6v12a2.25 2.25 0 002.25 2.25z" />
@@ -66,7 +67,7 @@ import Layout from '../layouts/Layout.astro';
           </article>
 
           <!-- Project 2 -->
-          <article class="project-card rounded-2xl overflow-hidden" style="background-color: #F5F0E8; border: 1px solid rgba(184, 144, 140, 0.25);">
+          <article class="project-card reveal rounded-2xl overflow-hidden" style="background-color: #F5F0E8; border: 1px solid rgba(184, 144, 140, 0.25);">
             <div class="flex items-center justify-center h-44" style="background-color: #C8D4B8;">
               <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="none" viewBox="0 0 24 24" stroke="rgba(90, 107, 74, 0.4)" stroke-width="1.5">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 14.25h13.5m-13.5 0a3 3 0 01-3-3m3 3a3 3 0 100 6h13.5a3 3 0 100-6m-16.5-3a3 3 0 013-3h13.5a3 3 0 013 3m-19.5 0a4.5 4.5 0 01.9-2.7L5.737 5.1a3.375 3.375 0 012.7-1.35h7.126c1.062 0 2.062.5 2.7 1.35l2.587 3.45a4.5 4.5 0 01.9 2.7m0 0a3 3 0 01-3 3m0 3h.008v.008h-.008v-.008zm0-6h.008v.008h-.008v-.008zm-3 6h.008v.008h-.008v-.008zm0-6h.008v.008h-.008v-.008z" />
@@ -105,7 +106,7 @@ import Layout from '../layouts/Layout.astro';
           </article>
 
           <!-- Project 3 -->
-          <article class="project-card rounded-2xl overflow-hidden" style="background-color: #F5F0E8; border: 1px solid rgba(184, 144, 140, 0.25);">
+          <article class="project-card reveal rounded-2xl overflow-hidden" style="background-color: #F5F0E8; border: 1px solid rgba(184, 144, 140, 0.25);">
             <div class="flex items-center justify-center h-44" style="background-color: #D9D0C4;">
               <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="none" viewBox="0 0 24 24" stroke="rgba(74, 60, 48, 0.3)" stroke-width="1.5">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 3v11.25A2.25 2.25 0 006 16.5h2.25M3.75 3h-1.5m1.5 0h16.5m0 0h1.5m-1.5 0v11.25A2.25 2.25 0 0118 16.5h-2.25m-7.5 0h7.5m-7.5 0l-1 3m8.5-3l1 3m0 0l.5 1.5m-.5-1.5h-9.5m0 0l-.5 1.5M9 11.25v1.5M12 9v3.75m3-6v6" />
@@ -143,8 +144,9 @@ import Layout from '../layouts/Layout.astro';
           </article>
 
           <!-- "More coming" card -->
-          <article class="rounded-2xl flex items-center justify-center h-full min-h-64 p-6" style="border: 1.5px dashed rgba(184, 144, 140, 0.4);">
+          <article class="reveal rounded-2xl flex items-center justify-center h-full min-h-64 p-6" style="border: 1.5px dashed rgba(184, 144, 140, 0.4);">
             <div class="text-center">
+              <div class="coming-soon-dot mx-auto"></div>
               <p class="font-jakarta font-semibold text-mauve text-xl mb-2">More on the way</p>
               <p class="font-jetbrains text-clay text-base">Check back soon — new projects in progress.</p>
             </div>

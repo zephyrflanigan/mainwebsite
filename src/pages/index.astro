@@ -3,25 +3,26 @@ import Layout from '../layouts/Layout.astro';
 ---
 
 <Layout
-  title="Zephyr Flanigan"
-  description="Full Stack Engineer based in New York City."
-  bodyClass="min-h-screen flex flex-col"
+  title="Zephyr Flanigan — Full Stack Engineer"
+  description="Full Stack Engineer based in New York City, building thoughtful digital experiences."
+  bodyClass="bg-sand min-h-screen flex flex-col"
+  canonical="https://zephyrflanigan.com/"
 >
   <!-- ===================== HERO ===================== -->
   <main class="flex-1 flex flex-col md:flex-row">
 
     <!-- LEFT / TOP panel -->
-    <div class="flex-1 flex items-center justify-center bg-sand p-8 md:p-16 lg:justify-start lg:flex-3 lg:h-screen">
+    <div class="flex-1 flex items-center justify-center bg-sand bg-textured p-8 md:p-16 lg:justify-start lg:flex-3 lg:h-screen">
       <div class="flex flex-col justify-center max-w-md w-full">
-        <h2 class="leading-tight text-lg font-jetbrains font-normal text-lichen">Hi, I'm</h2>
-        <h1 class="text-4xl font-jakarta font-semibold md:text-6xl lg:text-6xl leading-tight mb-4 text-mauve">
+        <h2 class="hero-line leading-tight text-lg font-jetbrains font-normal text-lichen">Hi, I'm</h2>
+        <h1 class="hero-line text-4xl font-jakarta font-semibold md:text-6xl lg:text-6xl leading-tight mb-4 text-mauve">
           Zephyr Flanigan
         </h1>
-        <h2 class="font-medium text-xl font-jetbrains text-mauve mb-5">Full Stack Engineer</h2>
-        <p class="leading-tight font-jetbrains font-normal text-lg mb-8 text-lichen">
+        <h2 id="hero-subtitle" class="hero-line font-medium text-xl font-jetbrains text-mauve mb-5">Full Stack Engineer</h2>
+        <p class="hero-line leading-tight font-jetbrains font-normal text-lg mb-8 text-lichen">
           I enjoy building thoughtful, reliable digital experiences where creative problem-solving, design, and technology come together in meaningful ways.
         </p>
-        <div class="flex flex-wrap gap-3">
+        <div class="hero-line flex flex-wrap gap-3">
           <a href="/about/" class="btn font-jetbrains text-sand bg-lichen border-lichen rounded-full hover:bg-olive hover:border-olive">About me</a>
           <a href="/contact/" class="btn font-jetbrains rounded-full btn-ghost text-lichen hover:bg-olive hover:border-olive hover:text-cream">Contact</a>
         </div>
@@ -33,7 +34,7 @@ import Layout from '../layouts/Layout.astro';
       <div class="max-w-md flex flex-col w-full text-primary-content text-center md:text-left">
         <div class="avatar flex justify-center">
           <div class="w-40 rounded-full mb-10 border-2 border-cream">
-            <img src="/images/pfp.jpg" alt="Zephyr Flanigan" />
+            <img src="/images/pfp.jpg" alt="Zephyr Flanigan" loading="lazy" />
           </div>
         </div>
         <h2 class="text-3xl flex justify-center text-center text-sand font-jakarta font-semibold mb-5">Based in NY, New York</h2>
@@ -66,4 +67,25 @@ import Layout from '../layouts/Layout.astro';
 
   </main>
   <!-- ==================== END HERO ==================== -->
+
+  <script>
+    // 3c — typewriter effect on hero subtitle
+    function typewriter(element: HTMLElement, text: string, speed = 60) {
+      element.textContent = '';
+      let i = 0;
+      const interval = setInterval(() => {
+        element.textContent += text[i++];
+        if (i === text.length) {
+          clearInterval(interval);
+          element.classList.add('typing-done');
+        }
+      }, speed);
+    }
+
+    const subtitle = document.getElementById('hero-subtitle');
+    if (subtitle) {
+      const original = subtitle.textContent?.trim() ?? '';
+      setTimeout(() => typewriter(subtitle as HTMLElement, original), 800);
+    }
+  </script>
 </Layout>

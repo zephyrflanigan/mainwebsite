@@ -34,3 +34,25 @@ function onScroll() {
 }
 window.addEventListener('scroll', onScroll, { passive: true });
 onScroll();
+
+// 3f/9a — active nav state (navbar + drawer)
+const currentPath = window.location.pathname.replace(/\/$/, '') || '';
+document.querySelectorAll('nav a[href], #nav-drawer a[href]').forEach((link) => {
+    const linkPath = link.getAttribute('href').replace(/\/$/, '') || '';
+    if (linkPath === currentPath) {
+        link.classList.add('text-mauve', 'font-semibold');
+        link.setAttribute('aria-current', 'page');
+    }
+});
+
+// 3a — scroll-triggered reveal animations
+const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            revealObserver.unobserve(entry.target);
+        }
+    });
+}, { threshold: 0.1 });
+
+document.querySelectorAll('.reveal').forEach((el) => revealObserver.observe(el));
