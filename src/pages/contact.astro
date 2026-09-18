@@ -13,27 +13,25 @@ import Layout from '../layouts/Layout.astro';
 
     <!-- LEFT / TOP panel — intro -->
     <div class="flex-1 flex items-center justify-center bg-sand p-8 md:p-16 lg:justify-start lg:flex-3 lg:h-screen">
-      <div class="flex flex-col justify-center max-w-md w-full">
+      <div class="flex reveal flex-col justify-center max-w-md w-full">
         <h2 class="leading-tight text-lg font-jetbrains font-normal text-lichen">Say hello</h2>
         <h1 class="text-4xl font-jakarta font-semibold md:text-6xl lg:text-6xl leading-tight mb-4 text-mauve">
           Get in touch
         </h1>
         <h2 class="font-medium text-xl font-jetbrains text-mauve mb-5">I'd love to hear from you</h2>
         <p class="leading-tight font-jetbrains font-normal text-lg mb-8 text-lichen">
-          Whether you have a project in mind, a role you think I'd be a good fit for,
-          or just want to connect — my inbox is open. I try to respond to everything
+          My inbox is open for both programming and non-programming topics alike! I try to respond to everything
           within a couple of days.
         </p>
         <div class="flex flex-wrap gap-3">
           <a href="/about/" class="btn font-jetbrains text-sand bg-lichen border-lichen rounded-full hover:bg-olive hover:border-olive">About me</a>
-          <a href="/portfolio/" class="btn font-jetbrains rounded-full btn-ghost text-lichen hover:bg-olive hover:border-olive hover:text-cream">Portfolio</a>
         </div>
       </div>
     </div>
 
     <!-- RIGHT / BOTTOM panel — contact methods -->
     <div class="flex-1 flex items-center justify-center bg-lichen p-8 md:p-16 lg:flex-1 lg:h-screen">
-      <div class="max-w-md flex flex-col w-full">
+      <div class="max-w-md reveal flex flex-col w-full">
 
         <p class="font-jetbrains text-cream text-sm uppercase tracking-widest mb-6">Reach me at</p>
 
@@ -41,7 +39,7 @@ import Layout from '../layouts/Layout.astro';
         <div class="mb-2">
           <p class="font-jakarta font-semibold text-sand text-xl mb-1">Email</p>
           <div class="flex items-center gap-3 mb-4">
-            <span id="email-text" class="font-jetbrains text-cream text-base">hello@zephyrflanigan.com</span>
+            <span id="email-text" class="font-jetbrains text-cream text-base">zephyr.flan@gmail.com</span>
             <button id="copy-email" aria-label="Copy email address"
                     class="btn btn-ghost btn-xs text-cream hover:text-sand">
               <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="none"
@@ -53,7 +51,7 @@ import Layout from '../layouts/Layout.astro';
             <span id="copy-confirm" class="font-jetbrains text-xs text-cream opacity-0 transition-opacity">Copied!</span>
           </div>
           <a
-            href="mailto:hello@zephyrflanigan.com"
+            href="mailto:zephyr.flan@gmail.com"
             class="btn font-jetbrains text-olive bg-sand border-sand rounded-full hover:bg-driftwood hover:border-driftwood w-full mb-8"
           >
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
