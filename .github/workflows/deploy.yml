@@ -6,14 +6,19 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: write
+  contents: read
+  pages: write
+  id-token: write
 
 jobs:
-  build-and-deploy:
+  build:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
+
+      - name: Install, build, and upload your site
+        uses: withastro/action@v6
 
       - name: Setup Node
         uses: actions/setup-node@v4
@@ -26,6 +31,16 @@ jobs:
 
       - name: Build
         run: npm run build
+    deploy:
+      needs: build
+      runs-on: ubuntu-latest
+      environment:
+        name: github-pages
+        url: ${{ steps.deployment.outputs.page_url }}
+      steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v5
 
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v4
