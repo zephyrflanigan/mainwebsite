@@ -1,0 +1,133 @@
+---
+import '../styles/global.css';
+
+interface Props {
+  title: string;
+  description?: string;
+  bodyClass?: string;
+  canonical?: string;
+}
+
+const {
+  title,
+  description = 'Full Stack Engineer based in New York City.',
+  bodyClass = 'bg-sand min-h-screen flex flex-col',
+  canonical,
+} = Astro.props;
+
+const ogTitle = title.includes('—') ? title : `${title} — Full Stack Engineer`;
+const base = import.meta.env.BASE_URL;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content={description} />
+    <title>{title}</title>
+
+    <!-- Fonts (6a) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap" />
+
+    <!-- Canonical (5c) -->
+    {canonical && <link rel="canonical" href={canonical} />}
+
+    <!-- Open Graph (5b) -->
+    <meta property="og:type"        content="website" />
+    <meta property="og:url"         content={canonical ?? 'https://zephyrflanigan.com/'} />
+    <meta property="og:title"       content={ogTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image"       content="https://zephyrflanigan.com/images/pfp.jpg" />
+
+    <!-- Twitter Card (5b) -->
+    <meta name="twitter:card"        content="summary" />
+    <meta name="twitter:title"       content={ogTitle} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image"       content="https://zephyrflanigan.com/images/pfp.jpg" />
+  </head>
+
+  <body class={bodyClass}>
+
+    <!-- ===================== NAVBAR ===================== -->
+    <nav class="navbar-start fixed top-0 left-0 w-full bg-transparent z-50 px-4">
+      <div class="navbar-start">
+        <a href={`${base} `} class="text-xl font-bold font-jakarta text-mauve">ZF</a>
+        <ul class="font-jakarta text-clay menu menu-horizontal gap-1 hidden md:flex">
+          <li class="ml-4"><a href={`${base} `}>Home</a></li>
+          <li><a href={`${base}/about/`}>About</a></li>
+          <li><a href={`${base}/contact/`}>Contact</a></li>
+        </ul>
+      </div>
+
+      <button
+        id="nav-open"
+        aria-label="Open navigation menu"
+        aria-expanded="false"
+        aria-controls="nav-drawer"
+        class="ml-auto btn btn-ghost btn-square md:hidden text-mauve"
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none"
+             viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+      </button>
+    </nav>
+    <!-- ==================== END NAVBAR ==================== -->
+
+    <slot />
+
+    <!-- Drawer overlay -->
+    <div id="nav-overlay" aria-hidden="true" class="fixed top-0 right-0 bottom-0 left-0 z-[90]"></div>
+
+    <!-- Slide-in drawer -->
+    <aside
+      id="nav-drawer"
+      role="dialog"
+      aria-modal="true"
+      aria-label="Navigation menu"
+      tabindex="-1"
+      class="fixed top-0 right-0 h-full bg-sand z-[100] flex flex-col px-8 pt-8 pb-12 shadow"
+      style="width: 18rem;"
+    >
+      <div class="flex items-center justify-between" style="margin-bottom: 3rem;">
+        <span class="text-xl font-bold font-jakarta text-mauve">ZF</span>
+        <button
+          id="nav-close"
+          aria-label="Close navigation menu"
+          class="btn btn-ghost btn-square text-mauve"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none"
+               viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+      </div>
+      <nav aria-label="Mobile navigation">
+        <ul class="flex flex-col gap-1">
+          <li><a href="/" class="drawer-link font-jakarta text-mauve text-xl font-medium block px-2 rounded-lg hover:bg-lichen hover:text-cream" style="padding-top: 0.75rem; padding-bottom: 0.75rem;">Home</a></li>
+          <li><a href="/about/" class="drawer-link font-jakarta text-mauve text-xl font-medium block px-2 rounded-lg hover:bg-lichen hover:text-cream" style="padding-top: 0.75rem; padding-bottom: 0.75rem;">About</a></li>
+          <li><a href="/portfolio/" class="drawer-link font-jakarta text-mauve text-xl font-medium block px-2 rounded-lg hover:bg-lichen hover:text-cream" style="padding-top: 0.75rem; padding-bottom: 0.75rem;">Portfolio</a></li>
+          <li><a href="/contact/" class="drawer-link font-jakarta text-mauve text-xl font-medium block px-2 rounded-lg hover:bg-lichen hover:text-cream" style="padding-top: 0.75rem; padding-bottom: 0.75rem;">Contact</a></li>
+        </ul>
+      </nav>
+      <div class="mt-auto border-t pt-6" style="border-color: rgba(184, 144, 140, 0.3);">
+        <p class="font-jetbrains text-clay text-sm">zephyrflanigan.com</p>
+      </div>
+    </aside>
+
+    <!-- Footer (9d) -->
+    <footer class="py-6 px-8 bg-transparent font-jetbrains text-sm text-clay text-center"
+            style="border-top: 1px solid rgba(184, 144, 140, 0.2);">
+      © 2026 Zephyr Flanigan
+    </footer>
+
+    <script>
+      import '../scripts/drawer.js';
+    </script>
+  </body>
+</html>
