@@ -1,5 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro';
+const base = import.meta.env.BASE_URL;
 ---
 
 <Layout
@@ -36,8 +37,16 @@ import Layout from '../layouts/Layout.astro';
 
       No matter the medium, I always have the same goal: to create something 
       that invites users to explore and connect with one another, whether 
-      it’s through a screen, a song, or a freshly baked cookie. 
+      it’s through a screen, a song, or a freshly baked cookie.
         </p>
+        <a
+          href={`${base}files/resume.pdf`}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="btn font-jetbrains text-sand bg-lichen border-lichen rounded-full hover:bg-olive hover:border-olive"
+        >
+          View resume
+        </a>
       </section>
 
       <div class="border-t mb-20" style="border-color: rgba(184, 144, 140, 0.3);"></div>
