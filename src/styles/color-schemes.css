@@ -1,5 +1,9 @@
 /* ============ Light scheme (default) ============ */
 @theme {
+  /* DaisyUI effect knobs — normally set by built-in themes; needed since themes: false */
+  --depth: 1;
+  --noise: 0;
+
   /* Base */
   --color-bg:              #f0ead8; /* cream */
   --color-surface:         #faf7ee; /* cards */
