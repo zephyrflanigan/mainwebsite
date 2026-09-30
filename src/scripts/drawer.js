@@ -40,7 +40,7 @@ const currentPath = window.location.pathname.replace(/\/$/, '') || '';
 document.querySelectorAll('nav a[href], #nav-drawer a[href]').forEach((link) => {
     const linkPath = link.getAttribute('href').replace(/\/$/, '') || '';
     if (linkPath === currentPath) {
-        link.classList.add('text-mauve', 'font-semibold');
+        link.classList.add('text-accent', 'font-semibold');
         link.setAttribute('aria-current', 'page');
     }
 });

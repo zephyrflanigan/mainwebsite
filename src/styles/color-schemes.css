@@ -1,0 +1,159 @@
+/* ============ Light scheme (default) ============ */
+@theme {
+  /* Base */
+  --color-bg:              #f0ead8; /* cream */
+  --color-surface:         #faf7ee; /* cards */
+  --color-surface-alt:     #dce7f2; /* pale blue — sidebars, table stripes, footers */
+  --color-border:          #cfc9a0;
+
+  /* Text */
+  --color-text:            #4b4b30; /* dark olive (7.4:1) */
+  --color-text-muted:      #666446; /* captions, meta (5.0:1) */
+  --color-heading:         #4b4b30; /* olive — same ink as body text */
+  --color-link:            #3d6385; /* mid blue */
+  --color-link-hover:      #2f4f68;
+
+  /* Actions */
+  --color-primary:         #4b4b30; /* olive — same ink as text/heading */
+  --color-primary-hover:   #5f5f3d;
+  --color-on-primary:      #f0ead8;
+  --color-secondary:       #aec7e0; /* pale blue */
+  --color-secondary-hover: #9bb9d6;
+  --color-on-secondary:    #4b4b30; /* dark olive text reads on the pale-blue fill */
+
+  /* Highlight — small pops (badges, rings), not the forefront color */
+  --color-highlight:       #afa857; /* olive gold */
+  --color-on-highlight:    #48192e;
+
+  /* Accent — plum, used sparingly */
+  --color-accent:          #48192e;
+  --color-on-accent:       #f0ead8;
+  --color-info:            #aec7e0; /* pale blue */
+  --color-on-info:         #48192e;
+
+  /* Tinted surfaces – callouts, section backgrounds, hover rows */
+  --color-tint-olive:      #e4e0bd;
+  --color-tint-blue:       #dce7f2;
+  --color-tint-plum:       #ecdde3;
+  --color-tint-brown:      #eadbcf;
+
+  /* Status (all ≥4.5:1 on bg) */
+  --color-success:         #5b6b2e;
+  --color-warning:         #8a5c18;
+  --color-error:           #9b2c3a;
+}
+
+/* Explicit light override — lets the toggle force light even when the OS prefers dark */
+:root[data-theme="light"] {
+  --color-bg:              #f0ead8;
+  --color-surface:         #faf7ee;
+  --color-surface-alt:     #dce7f2;
+  --color-border:          #cfc9a0;
+  --color-text:            #4b4b30;
+  --color-text-muted:      #666446;
+  --color-heading:         #4b4b30;
+  --color-link:            #3d6385;
+  --color-link-hover:      #2f4f68;
+  --color-primary:         #4b4b30;
+  --color-primary-hover:   #5f5f3d;
+  --color-on-primary:      #f0ead8;
+  --color-secondary:       #aec7e0;
+  --color-secondary-hover: #9bb9d6;
+  --color-on-secondary:    #4b4b30;
+  --color-highlight:       #afa857;
+  --color-on-highlight:    #48192e;
+  --color-accent:          #48192e;
+  --color-on-accent:       #f0ead8;
+  --color-info:            #aec7e0;
+  --color-on-info:         #48192e;
+  --color-tint-olive:      #e4e0bd;
+  --color-tint-blue:       #dce7f2;
+  --color-tint-plum:       #ecdde3;
+  --color-tint-brown:      #eadbcf;
+  --color-success:         #5b6b2e;
+  --color-warning:         #8a5c18;
+  --color-error:           #9b2c3a;
+  color-scheme: light;
+}
+
+/* Theme-toggle icon state — sun shows in light mode, moon shows in dark mode.
+   Mirrors the color selectors above so the icon is correct on first paint, no JS. */
+[data-theme-toggle] .icon-moon { display: none; }
+:root[data-theme="light"] [data-theme-toggle] .icon-moon { display: none; }
+:root[data-theme="light"] [data-theme-toggle] .icon-sun { display: block; }
+
+/* ============ Dark scheme — follows the OS unless overridden to light ============ */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --color-bg:              #262618;
+    --color-surface:         #33331f;
+    --color-surface-alt:     #3e3e27;
+    --color-border:          #5e5e3e;
+
+    --color-text:            #f0ead8;
+    --color-text-muted:      #a8a38e;
+    --color-heading:         #afa857;
+    --color-link:            #aec7e0;
+    --color-link-hover:      #c6d8ea;
+
+    --color-primary:         #afa857;
+    --color-primary-hover:   #c4be74;
+    --color-on-primary:      #262618;
+    --color-secondary:       #aec7e0;
+    --color-secondary-hover: #c6d8ea;
+    --color-on-secondary:    #262618;
+
+    --color-accent:          #d98cb3; /* lighter plum for contrast on dark bg */
+    --color-on-accent:       #2a0f1c;
+    --color-info:            #6f4128;
+    --color-on-info:         #f0ead8;
+
+    --color-tint-olive:      #3e3d22;
+    --color-tint-blue:       #2a3440;
+    --color-tint-plum:       #3a2030;
+    --color-tint-brown:      #3d2a1d;
+
+    --color-success:         #b5c27a;
+    --color-warning:         #e0b35c;
+    --color-error:           #e38a95;
+
+    color-scheme: dark;
+  }
+
+  :root:not([data-theme="light"]) [data-theme-toggle] .icon-sun { display: none; }
+  :root:not([data-theme="light"]) [data-theme-toggle] .icon-moon { display: block; }
+}
+
+/* Explicit dark override — the manual toggle sets this regardless of OS preference */
+:root[data-theme="dark"] {
+  --color-bg:              #262618;
+  --color-surface:         #33331f;
+  --color-surface-alt:     #3e3e27;
+  --color-border:          #5e5e3e;
+  --color-text:            #f0ead8;
+  --color-text-muted:      #a8a38e;
+  --color-heading:         #afa857;
+  --color-link:            #aec7e0;
+  --color-link-hover:      #c6d8ea;
+  --color-primary:         #afa857;
+  --color-primary-hover:   #c4be74;
+  --color-on-primary:      #262618;
+  --color-secondary:       #aec7e0;
+  --color-secondary-hover: #c6d8ea;
+  --color-on-secondary:    #262618;
+  --color-accent:          #d98cb3;
+  --color-on-accent:       #2a0f1c;
+  --color-info:            #6f4128;
+  --color-on-info:         #f0ead8;
+  --color-tint-olive:      #3e3d22;
+  --color-tint-blue:       #2a3440;
+  --color-tint-plum:       #3a2030;
+  --color-tint-brown:      #3d2a1d;
+  --color-success:         #b5c27a;
+  --color-warning:         #e0b35c;
+  --color-error:           #e38a95;
+  color-scheme: dark;
+}
+
+:root[data-theme="dark"] [data-theme-toggle] .icon-sun { display: none; }
+:root[data-theme="dark"] [data-theme-toggle] .icon-moon { display: block; }

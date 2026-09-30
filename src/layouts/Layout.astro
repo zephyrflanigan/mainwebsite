@@ -11,7 +11,7 @@ interface Props {
 const {
   title,
   description = 'Full Stack Engineer based in New York City.',
-  bodyClass = 'bg-sand min-h-screen flex flex-col',
+  bodyClass = 'bg-bg min-h-screen flex flex-col',
   canonical,
 } = Astro.props;
 
@@ -23,6 +23,16 @@ const base = import.meta.env.BASE_URL;
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <script is:inline>
+      (function () {
+        try {
+          var override = localStorage.getItem('theme-override');
+          if (override === 'light' || override === 'dark') {
+            document.documentElement.setAttribute('data-theme', override);
+          }
+        } catch (e) {}
+      })();
+    </script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content={description} />
     <title>{title}</title>
@@ -57,8 +67,8 @@ const base = import.meta.env.BASE_URL;
     <!-- ===================== NAVBAR ===================== -->
     <nav class="navbar-start fixed top-0 left-0 w-full bg-transparent z-50 px-4">
       <div class="navbar-start">
-        <a href={base} class="text-xl font-bold font-jakarta text-mauve">ZF</a>
-        <ul class="font-jakarta text-clay menu menu-horizontal gap-1 hidden md:flex">
+        <a href={base} class="text-xl font-bold font-jakarta text-heading">ZF</a>
+        <ul class="font-jakarta text-accent menu menu-horizontal gap-1 hidden md:flex">
           <li class="ml-4"><a href={base}>Home</a></li>
           <li><a href={`${base}about/`}>About</a></li>
           <li><a href={`${base}contact/`}>Contact</a></li>
@@ -66,11 +76,30 @@ const base = import.meta.env.BASE_URL;
       </div>
 
       <button
+        id="theme-toggle-nav"
+        data-theme-toggle
+        aria-label="Toggle color theme"
+        aria-pressed="false"
+        class="ml-auto btn btn-ghost btn-square text-accent"
+      >
+        <svg class="icon-sun h-5 w-5" xmlns="http://www.w3.org/2000/svg" fill="none"
+             viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M12 3v1.5m0 15V21m9-9h-1.5M4.5 12H3m15.364-6.364l-1.06 1.06M6.696 17.304l-1.06 1.06m0-12.728l1.06 1.06M17.304 17.304l1.06 1.06M16.5 12a4.5 4.5 0 11-9 0 4.5 4.5 0 019 0z" />
+        </svg>
+        <svg class="icon-moon h-5 w-5" xmlns="http://www.w3.org/2000/svg" fill="none"
+             viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M21.752 15.002A9.72 9.72 0 0118 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 003 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 009.002-5.998z" />
+        </svg>
+      </button>
+
+      <button
         id="nav-open"
         aria-label="Open navigation menu"
         aria-expanded="false"
         aria-controls="nav-drawer"
-        class="ml-auto btn btn-ghost btn-square md:hidden text-mauve"
+        class="btn btn-ghost btn-square md:hidden text-heading"
       >
         <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none"
              viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
@@ -93,43 +122,64 @@ const base = import.meta.env.BASE_URL;
       aria-modal="true"
       aria-label="Navigation menu"
       tabindex="-1"
-      class="fixed top-0 right-0 h-full bg-sand z-[100] flex flex-col px-8 pt-8 pb-12 shadow"
+      class="fixed top-0 right-0 h-full bg-bg z-[100] flex flex-col px-8 pt-8 pb-12 shadow"
       style="width: 18rem;"
     >
       <div class="flex items-center justify-between" style="margin-bottom: 3rem;">
-        <span class="text-xl font-bold font-jakarta text-mauve">ZF</span>
-        <button
-          id="nav-close"
-          aria-label="Close navigation menu"
-          class="btn btn-ghost btn-square text-mauve"
-        >
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none"
-               viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                  d="M6 18L18 6M6 6l12 12" />
-          </svg>
-        </button>
+        <span class="text-xl font-bold font-jakarta text-heading">ZF</span>
+        <div class="flex items-center gap-1">
+          <button
+            id="theme-toggle-drawer"
+            data-theme-toggle
+            aria-label="Toggle color theme"
+            aria-pressed="false"
+            class="btn btn-ghost btn-square text-accent"
+          >
+            <svg class="icon-sun h-5 w-5" xmlns="http://www.w3.org/2000/svg" fill="none"
+                 viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M12 3v1.5m0 15V21m9-9h-1.5M4.5 12H3m15.364-6.364l-1.06 1.06M6.696 17.304l-1.06 1.06m0-12.728l1.06 1.06M17.304 17.304l1.06 1.06M16.5 12a4.5 4.5 0 11-9 0 4.5 4.5 0 019 0z" />
+            </svg>
+            <svg class="icon-moon h-5 w-5" xmlns="http://www.w3.org/2000/svg" fill="none"
+                 viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M21.752 15.002A9.72 9.72 0 0118 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 003 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 009.002-5.998z" />
+            </svg>
+          </button>
+          <button
+            id="nav-close"
+            aria-label="Close navigation menu"
+            class="btn btn-ghost btn-square text-heading"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none"
+                 viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
+        </div>
       </div>
       <nav aria-label="Mobile navigation">
         <ul class="flex flex-col gap-1">
-          <li><a href="/" class="drawer-link font-jakarta text-mauve text-xl font-medium block px-2 rounded-lg hover:bg-lichen hover:text-cream" style="padding-top: 0.75rem; padding-bottom: 0.75rem;">Home</a></li>
-          <li><a href="/about/" class="drawer-link font-jakarta text-mauve text-xl font-medium block px-2 rounded-lg hover:bg-lichen hover:text-cream" style="padding-top: 0.75rem; padding-bottom: 0.75rem;">About</a></li>
-          <li><a href="/contact/" class="drawer-link font-jakarta text-mauve text-xl font-medium block px-2 rounded-lg hover:bg-lichen hover:text-cream" style="padding-top: 0.75rem; padding-bottom: 0.75rem;">Contact</a></li>
+          <li><a href="/" class="drawer-link font-jakarta text-accent text-xl font-medium block px-2 rounded-lg hover:bg-accent hover:text-on-primary" style="padding-top: 0.75rem; padding-bottom: 0.75rem;">Home</a></li>
+          <li><a href="/about/" class="drawer-link font-jakarta text-accent text-xl font-medium block px-2 rounded-lg hover:bg-accent hover:text-on-primary" style="padding-top: 0.75rem; padding-bottom: 0.75rem;">About</a></li>
+          <li><a href="/contact/" class="drawer-link font-jakarta text-accent text-xl font-medium block px-2 rounded-lg hover:bg-accent hover:text-on-primary" style="padding-top: 0.75rem; padding-bottom: 0.75rem;">Contact</a></li>
         </ul>
       </nav>
-      <div class="mt-auto border-t pt-6" style="border-color: rgba(184, 144, 140, 0.3);">
-        <p class="font-jetbrains text-clay text-sm">zephyrflanigan.com</p>
+      <div class="mt-auto border-t pt-6" style="border-color: var(--color-border);">
+        <p class="font-jetbrains text-text-muted text-sm">zephyrflanigan.com</p>
       </div>
     </aside>
 
     <!-- Footer (9d) -->
-    <footer class="py-6 px-8 bg-transparent font-jetbrains text-sm text-clay text-center"
-            style="border-top: 1px solid rgba(184, 144, 140, 0.2);">
+    <footer class="py-6 px-8 bg-transparent font-jetbrains text-sm text-text-muted text-center"
+            style="border-top: 1px solid var(--color-border);">
       © 2026 Zephyr Flanigan
     </footer>
 
     <script>
       import '../scripts/drawer.js';
+      import '../scripts/theme.js';
     </script>
   </body>
 </html>
