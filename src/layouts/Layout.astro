@@ -80,7 +80,7 @@ const base = import.meta.env.BASE_URL;
         data-theme-toggle
         aria-label="Toggle color theme"
         aria-pressed="false"
-        class="ml-auto btn btn-ghost btn-square text-accent"
+        class="ml-auto btn btn-ghost rounded-md btn-square border-transparent text-accent hover:bg-black/10"
       >
         <svg class="icon-sun h-5 w-5" xmlns="http://www.w3.org/2000/svg" fill="none"
              viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
@@ -99,7 +99,7 @@ const base = import.meta.env.BASE_URL;
         aria-label="Open navigation menu"
         aria-expanded="false"
         aria-controls="nav-drawer"
-        class="btn btn-ghost btn-square md:hidden text-heading"
+        class="btn btn-ghost btn-square rounded-md border-transparent md:hidden text-heading hover:bg-black/10"
       >
         <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none"
              viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
@@ -133,7 +133,7 @@ const base = import.meta.env.BASE_URL;
             data-theme-toggle
             aria-label="Toggle color theme"
             aria-pressed="false"
-            class="btn btn-ghost btn-square text-accent"
+            class="btn btn-ghost btn-square rounded-md border-transparent text-accent hover:bg-black/10"
           >
             <svg class="icon-sun h-5 w-5" xmlns="http://www.w3.org/2000/svg" fill="none"
                  viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
@@ -149,7 +149,7 @@ const base = import.meta.env.BASE_URL;
           <button
             id="nav-close"
             aria-label="Close navigation menu"
-            class="btn btn-ghost btn-square text-heading"
+            class="btn btn-ghost rounded-md btn-square border-transparent text-heading hover:bg-black/10"
           >
             <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none"
                  viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
@@ -167,12 +167,12 @@ const base = import.meta.env.BASE_URL;
         </ul>
       </nav>
       <div class="mt-auto border-t pt-6" style="border-color: var(--color-border);">
-        <p class="font-jetbrains text-text-muted text-sm">zephyrflanigan.com</p>
+        <p class="font-jetbrains text-accent text-sm">zephyrflanigan.com</p>
       </div>
     </aside>
 
     <!-- Footer (9d) -->
-    <footer class="py-6 px-8 bg-transparent font-jetbrains text-sm text-text-muted text-center"
+    <footer class="py-6 px-8 bg-transparent font-jetbrains text-sm text-accent text-center"
             style="border-top: 1px solid var(--color-border);">
       © 2026 Zephyr Flanigan
     </footer>
