@@ -8,6 +8,84 @@
     /*fonts*/
     --font-jakarta: "Plus Jakarta Sans", sans-serif;
     --font-jetbrains: 'JetBrains Mono', mono;
+    --font-fluxisch: 'FluxischElse', sans-serif;
+    --font-amono: 'AMono', mono;
+    --font-wdroge: 'W-Droge', mono;
+    --font-ume: 'UmePGothic', mono;
+    --font-umewide: 'UmeWide',mono;
+}
+
+@font-face {
+    font-family: 'W-Droge';
+    src: url('/fonts/W-Droge-Itinerary.woff') format('woff');
+    font-weight: 100;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'UmePGothic';
+    src: url('/fonts/Ume-P-Gothic-Vertical.ttf') format('truetype');
+    font-weight: 80;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'UmeWide';
+    src: url('/fonts/Ume-Vertical-Wide.ttf') format('truetype');
+    font-weight: 80;
+    font-style: normal;
+    font-display: swap;
+}
+
+
+@font-face {
+    font-family: 'FluxischElse';
+    src: url('/fonts/FluxischElse-Light.woff') format('woff');
+    font-weight: 200;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'FluxischElse';
+    src: url('/fonts/FluxischElse-Regular.woff') format('woff');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'FluxischElse';
+    src: url('/fonts/FluxischElse-Bold.woff') format('woff');
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'AMono';
+    src: url('/fonts/AMONO-regular.woff2') format('woff2');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'AMono';
+    src: url('/fonts/AMONO-bold.woff2') format('woff2');
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'AMono';
+    src: url('/fonts/AMONO-black.woff2') format('woff2');
+    font-weight: 900;
+    font-style: normal;
+    font-display: swap;
 }
 
 #nav-overlay {
